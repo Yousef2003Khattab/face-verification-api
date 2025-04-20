@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+opencv-python
+numpy
+tensorflow==2.12.0
+face_recognition
+scipy
+scikit-learn
