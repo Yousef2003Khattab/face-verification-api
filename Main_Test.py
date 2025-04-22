@@ -25,9 +25,9 @@ reference_encoding = None
 
 # رفع صورة ID
 @app.post("/upload-id/")
-async def upload_id_image(file: UploadFile = File(...)):
+async def upload_id_image(ID_image: UploadFile = File(..., alias="ID_image")):
     global id_encoding
-    id_img = await file.read()
+    id_img = await id_image.read()
     id_img = np.frombuffer(id_img, np.uint8)
     id_img = cv2.imdecode(id_img, cv2.IMREAD_COLOR)
 
@@ -43,9 +43,9 @@ async def upload_id_image(file: UploadFile = File(...)):
 
 # رفع صورة Reference
 @app.post("/upload-reference/")
-async def upload_reference_image(file: UploadFile = File(...)):
+async def upload_reference_image(reference_image: UploadFile = File(..., alias="reference_image")):
     global reference_encoding
-    ref_img = await file.read()
+    ref_img = await reference_image.read()
     ref_img = np.frombuffer(ref_img, np.uint8)
     ref_img = cv2.imdecode(ref_img, cv2.IMREAD_COLOR)
 
@@ -61,13 +61,13 @@ async def upload_reference_image(file: UploadFile = File(...)):
 
 # التحقق من صورة الاختبار
 @app.post("/verify/")
-async def verify_image(file: UploadFile = File(...)):
+async def verify_image(test_image: UploadFile = File(..., alias="test_image")):
     global id_encoding, reference_encoding
 
     if id_encoding is None or reference_encoding is None:
         return JSONResponse(content={"message": "ID or reference image not uploaded."}, status_code=400)
 
-    test_img = await file.read()
+    test_img = await test_image.read()
     test_img = np.frombuffer(test_img, np.uint8)
     test_img = cv2.imdecode(test_img, cv2.IMREAD_COLOR)
 
