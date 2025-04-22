@@ -27,7 +27,7 @@ reference_encoding = None
 @app.post("/upload-id/")
 async def upload_id_image(ID_image: UploadFile = File(..., alias="ID_image")):
     global id_encoding
-    id_img = await id_image.read()
+    id_img = await ID_image.read()
     id_img = np.frombuffer(id_img, np.uint8)
     id_img = cv2.imdecode(id_img, cv2.IMREAD_COLOR)
 
