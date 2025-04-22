@@ -24,6 +24,7 @@ id_encoding = None
 reference_encoding = None
 
 # رفع صورة ID
+# رفع صورة ID
 @app.post("/upload-id/")
 async def upload_id_image(ID_image: UploadFile = File(..., alias="ID_image")):
     global id_encoding
@@ -40,7 +41,6 @@ async def upload_id_image(ID_image: UploadFile = File(..., alias="ID_image")):
     id_encoding = model.predict(id_img, verbose=0)
 
     return {"message": "ID image uploaded and encoding computed successfully"}
-
 # رفع صورة Reference
 @app.post("/upload-reference/")
 async def upload_reference_image(reference_image: UploadFile = File(..., alias="reference_image")):
