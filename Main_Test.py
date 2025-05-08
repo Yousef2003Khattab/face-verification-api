@@ -17,7 +17,7 @@ from fastapi.responses import JSONResponse
 app = FastAPI()
 
 # تحميل الموديل
-model = tf.keras.models.load_model("Adv_face_recognition_cnn_model.keras")
+model = tf.keras.models.load_model("Adv_face_recognition_cnn_model.h5")
 
 # المتغيرات لتخزين الترميزات (encoding) للـ ID والـ Reference
 id_encoding = None
