@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import os
-import face_recognition
 import collections
 import tensorflow as tf
 from tensorflow.keras.utils import to_categorical
