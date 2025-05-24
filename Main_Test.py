@@ -1,15 +1,11 @@
 import cv2
 import numpy as np
-import os
-import collections
 import tensorflow as tf
 from tensorflow.keras.utils import to_categorical
-from scipy.spatial.distance import cosine
 from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
 from tensorflow.keras.optimizers import Adam
-from sklearn.model_selection import train_test_split
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
 
